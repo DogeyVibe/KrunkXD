@@ -6,6 +6,8 @@
 // @match        *://krunker.io/*
 // @grant        GM.registerMenuCommand
 // @grant        unsafeWindow
+// @updateURL    https://github.com/DogeyVibe/KrunkXD/raw/main/KrunkXD.user.js
+// @run-at       document-start
 // ==/UserScript==
 
 window = unsafeWindow;
