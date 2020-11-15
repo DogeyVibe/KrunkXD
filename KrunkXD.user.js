@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         KrunkXD
-// @version      1.0.1
+// @version      1.0.2
 // @author       Dogey
 // @description  KrunkXD - op kranker dot eye oh h4x dll firefox api
 // @match        *://krunker.io/*
