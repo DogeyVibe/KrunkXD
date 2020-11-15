@@ -5,6 +5,7 @@ Krunker cheat :0
 * Aimbot
 * Auto Aim
 * Auto Shoot
+* Wallbang
 * Nametag ESP
 * Hack Toggle
 * Auto Update
