@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         KrunkXD
-// @version      1.0.2
+// @version      1.0.3
 // @author       Dogey
 // @description  KrunkXD - op kranker dot eye oh h4x dll firefox api
 // @match        *://krunker.io/*
@@ -106,30 +106,12 @@ const patchCode = function(code) {
     return code;
 }
 
-// <start> Hook by hrt/ttap (but I modified a little)
-function hookJoin(wnd) {
-    const arrayJoin = wnd.Array.prototype.join;
-    wnd.Array.prototype.join = new Proxy(arrayJoin, {
-        apply: function(target, _this, _arguments) {
-            let ret = Function.prototype.apply.apply(target, [_this, _arguments]);
-                if (_arguments.length && _arguments[0] == "" && _this.length > (420 * 69 /* funny numbers */)) {
-                    let code = ret;
-                    code = patchCode(code);
-                    return code;
-                }
-                return ret;
-            }
-        });
-}
-
-const appendChild = HTMLBodyElement.prototype.appendChild;
-HTMLBodyElement.prototype.appendChild = new Proxy(appendChild, {
-    apply: function(target, _this, _arguments) {
-        let ret = Function.prototype.apply.apply(target, [_this, _arguments]);
-        if (_arguments.length && _arguments[0].__proto__ == HTMLIFrameElement.prototype) {
-            hookJoin(_arguments[0].contentWindow);
+const _Function = Function;
+window.Function = new Proxy(Function, {
+    construct(target, args) {
+        if ((args[2] || "").startsWith("var vrtInit")) {
+            args[2] = patchCode(args[2]);    
         }
-        return ret;
+        return new target(...args);
     }
-});
-// <end> Hook by hrt/ttap (but I modified a little)
+})
