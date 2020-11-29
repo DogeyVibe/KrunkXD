@@ -110,7 +110,8 @@ const _Function = Function;
 window.Function = new Proxy(Function, {
     construct(target, args) {
         if ((args[2] || "").startsWith("var vrtInit")) {
-            args[2] = patchCode(args[2]);    
+            args[2] = patchCode(args[2]);
+            window.Function = _Function;
         }
         return new target(...args);
     }
