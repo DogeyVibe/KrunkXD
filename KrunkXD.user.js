@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         KrunkXD
-// @version      1.0.3
+// @version      1.0.4
 // @author       Dogey
 // @description  KrunkXD - op kranker dot eye oh h4x dll firefox api
 // @match        *://krunker.io/*
@@ -34,7 +34,7 @@ const key = {
 
 const varsRe = {
     cnBSeen: { regex: /if\(!\w+\['(\w+)'\]\)continue;/, pos: 1 },
-    recoilAnimY: { regex: /,this\['(\w+)']\+=this\['recoilForce']/, pos: 1 },
+    recoilAnimY: { regex: /this\['(\w+)']\+=this\['\w+']\*\(/, pos: 1 },
     aimVal: { regex: /this\['(\w+)']-=0x1\/\(this\['weapon']\['\w+']\/\w+\)/, pos: 1 },
     pchObjc: { regex: /0x0,this\['(\w+)']=new \w+\['Object3D']\(\),this/, pos: 1 },
     didShoot: { regex: /--,\w+\['(\w+)']=!0x0/, pos: 1 },
