@@ -19,8 +19,8 @@ let game, input, me, recon, lock;
 const key = {
     frame: 0,
     delta: 1,
-    ydir: 2,
-    xdir: 3,
+    xdir: 2,
+    ydir: 3,
     moveDir: 4,
     shoot: 5,
     scope: 6,
