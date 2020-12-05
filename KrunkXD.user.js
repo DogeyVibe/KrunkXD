@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         KrunkXD
-// @version      1.0.5
+// @version      1.0.5.1
 // @author       Dogey
 // @description  KrunkXD - op kranker dot eye oh h4x dll firefox api
 // @match        *://krunker.io/*
@@ -25,8 +25,8 @@ const key = {
     shoot: 5,
     scope: 6,
     jump: 7,
-    crouch: 8,
-    reload: 9,
+    reload: 8,
+    crouch: 9,
     weaponScroll: 10,
     weaponSwap: 11,
     moveLock: 12
