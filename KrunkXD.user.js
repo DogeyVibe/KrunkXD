@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         KrunkXD
-// @version      1.0.5.1
+// @version      1.0.6
 // @author       Dogey
 // @description  KrunkXD - op kranker dot eye oh h4x dll firefox api
 // @match        *://krunker.io/*
@@ -33,7 +33,7 @@ const key = {
 };
 
 const varsRe = {
-    cnBSeen: { regex: /if\(!\w+\['(\w+)'\]\)continue;/, pos: 1 },
+    cnBSeen: { regex: /(&&!\w\['\w+']&&\w\['\w+'\]&&)\w\['(\w+)'](\){)/, pos: 2 },
     recoilAnimY: { regex: /this\['(\w+)']\+=this\['\w+']\*\(/, pos: 1 },
     aimVal: { regex: /this\['(\w+)']-=0x1\/\(this\['weapon']\['\w+']\/\w+\)/, pos: 1 },
     pchObjc: { regex: /0x0,this\['(\w+)']=new \w+\['Object3D']\(\),this/, pos: 1 },
@@ -101,7 +101,7 @@ const patchCode = function(code) {
         const key = varsRe[i];
         vars[i] = key.regex.exec(code)[key.pos];
     }
-    code = code.replace(varsRe.cnBSeen.regex, "if (!window.hackToggle) { $& };").replace(/!(\w+)\['transparent']/, `$&& (!window.hackToggle || !$1.penetrable )`).replace(/(this\['\w+']=function\(\w+,\w+,\w+,\w+\){)(this\['recon'])/, "$1{\nconst [input, game, recon, lock] = arguments, me = this;\nwindow.useHack(input, game, me, recon, lock);};$2") // patches code
+    code = code.replace(varsRe.cnBSeen.regex, "$1true$3").replace(/!(\w+)\['transparent']/, `$&& (!window.hackToggle || !$1.penetrable )`).replace(/(this\['\w+']=function\(\w+,\w+,\w+,\w+\){)(this\['recon'])/, "$1{\nconst [input, game, recon, lock] = arguments, me = this;\nwindow.useHack(input, game, me, recon, lock);};$2") // patches code
     GM.registerMenuCommand("Toggle Hack", toggleHack);
     return code;
 }
