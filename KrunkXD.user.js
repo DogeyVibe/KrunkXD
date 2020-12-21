@@ -109,7 +109,7 @@ const patchCode = function(code) {
 const _Function = Function;
 window.Function = new Proxy(Function, {
     construct(target, args) {
-        if ((args[2] || "").startsWith("var vrtInit")) {
+        if ((args[2] || "").length > ~~(6e9 / (1337 + 420))) {
             args[2] = patchCode(args[2]);
             window.Function = _Function;
         }
